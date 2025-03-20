@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Tech Trends{% endblock %}
+
+{% block content %}
+<h2>🚀 Tech Trends</h2>
+<p>Explore the latest trends shaping the future of technology.</p>
+
+<div class="news-container">
+    <div class="news-item">
+        <h3>🤖 AI-Powered Search Engines are Changing the Web</h3>
+        <p>AI-driven search engines like Google's Gemini and OpenAI's ChatGPT are redefining how we find information.</p>
+        <a href="#">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🌐 The Rise of Quantum Computing</h3>
+        <p>Quantum computing is advancing, with companies like IBM and Google making breakthroughs in quantum processors.</p>
+        <a href="#">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>📱 Foldable Smartphones Becoming the New Norm</h3>
+        <p>Tech giants like Samsung and Google are investing heavily in foldable and rollable screen technology.</p>
+        <a href="#">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>⚡ Electric Vehicles & Solid-State Batteries</h3>
+        <p>Solid-state battery technology could drastically improve EV efficiency and charging speed.</p>
+        <a href="#">Read more</a>
+    </div>
+</div>
+
+<style>
+    .news-container {
+        margin-top: 20px;
+    }
+    .news-item {
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    .news-item h3 {
+        margin: 0;
+        color: #007bff;
+    }
+    .news-item p {
+        margin: 5px 0;
+    }
+    .news-item a {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .news-item a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock %}

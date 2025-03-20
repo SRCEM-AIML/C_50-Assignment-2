@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Tech News{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Welcome to the Tech News Aggregator</h1>
+    <p>Stay updated with the latest in technology.</p>
+</div>
+
+<div class="news-container">
+    <!-- Futuristic Tech News for 2025 -->
+    <div class="news-item">
+        <h3>🚀 Mars Colonization Tech Advances</h3>
+        <p>Space agencies and private companies are developing advanced life-support systems and habitats for the first human missions to Mars in 2025.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🤖 Humanoid Robots in Everyday Life</h3>
+        <p>Humanoid robots like Tesla's Optimus are now assisting in homes, hospitals, and workplaces, revolutionizing daily tasks and services.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🌐 Quantum Internet Goes Live</h3>
+        <p>The first quantum internet networks are operational, enabling ultra-secure communication and faster data transfer across the globe.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>📱 Holographic Smartphones</h3>
+        <p>2025 introduces holographic smartphones that project 3D images and interfaces, changing the way we interact with our devices.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>⚡ Wireless Power Everywhere</h3>
+        <p>Wireless power technology is now mainstream, allowing devices to charge seamlessly without cables, even in public spaces.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🌍 Carbon-Negative Tech Solutions</h3>
+        <p>Innovative carbon-capture technologies are being deployed at scale, helping reverse climate change and achieve net-zero emissions.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🧠 Brain-Computer Interfaces (BCIs)</h3>
+        <p>BCIs are now being used to help paralyzed individuals control devices with their thoughts, opening new possibilities for medical science.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>📡 6G Networks Roll Out Globally</h3>
+        <p>6G networks are live, offering speeds up to 1 terabit per second and enabling real-time holographic communication.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+</div>
+
+<style>
+    .news-container {
+        margin-top: 20px;
+    }
+    .news-item {
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    .news-item h3 {
+        margin: 0;
+        color: #007bff;
+    }
+    .news-item p {
+        margin: 5px 0;
+    }
+    .news-item a {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .news-item a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock %}

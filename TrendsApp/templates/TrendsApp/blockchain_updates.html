@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Blockchain Updates{% endblock %}
+
+{% block content %}
+<h2>🔗 Blockchain Updates</h2>
+<p>Learn about the latest advancements in blockchain technology.</p>
+
+<div class="news-container">
+    <!-- Blockchain News Items -->
+    <div class="news-item">
+        <h3>🚀 Blockchain Beyond Cryptocurrency</h3>
+        <p>Blockchain is being adopted in industries like healthcare, supply chain, and voting systems for secure and transparent record-keeping.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>💡 Smart Contracts Revolution</h3>
+        <p>Smart contracts are automating agreements and transactions, reducing the need for intermediaries and increasing efficiency.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🌍 Decentralized Finance (DeFi) Growth</h3>
+        <p>DeFi platforms are disrupting traditional financial systems by offering decentralized lending, borrowing, and trading services.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🔒 Blockchain for Cybersecurity</h3>
+        <p>Blockchain's immutable nature is being leveraged to enhance cybersecurity and protect sensitive data from breaches.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>📈 NFTs and Digital Ownership</h3>
+        <p>Non-fungible tokens (NFTs) are transforming the art and entertainment industries by enabling verifiable digital ownership.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>⚡ Energy-Efficient Blockchain Solutions</h3>
+        <p>New blockchain protocols are addressing energy consumption concerns, making the technology more sustainable.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🌐 Interoperability Between Blockchains</h3>
+        <p>Projects like Polkadot and Cosmos are enabling seamless communication and data sharing between different blockchain networks.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🏦 Central Bank Digital Currencies (CBDCs)</h3>
+        <p>Countries worldwide are exploring CBDCs to modernize their financial systems and improve payment efficiency.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+</div>
+
+<style>
+    .news-container {
+        margin-top: 20px;
+    }
+    .news-item {
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    .news-item h3 {
+        margin: 0;
+        color: #007bff;
+    }
+    .news-item p {
+        margin: 5px 0;
+    }
+    .news-item a {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .news-item a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock %}

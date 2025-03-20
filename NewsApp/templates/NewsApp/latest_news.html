@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Latest News{% endblock %}
+
+{% block content %}
+<h2>📰 Latest Tech News</h2>
+<p>Stay updated with the most recent technology trends and innovations.</p>
+
+<div class="news-container">
+    <!-- Existing News Items -->
+    <div class="news-item">
+        <h3>📡 6G Wireless Technology Under Development</h3>
+        <p>Major telecom companies are already working on 6G networks, promising speeds 100x faster than 5G.</p>
+        <a href="{% url 'tech-trends' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🌍 Blockchain Expands Beyond Cryptocurrency</h3>
+        <p>Blockchain is now being used in supply chains, healthcare, and secure voting systems worldwide.</p>
+        <a href="{% url 'blockchain-updates' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🤖 Robots in Daily Life: Are We Ready?</h3>
+        <p>From AI-powered assistants to self-driving cars, robots are becoming an integral part of our lives.</p>
+        <a href="{% url 'ai-trends' %}">Read more</a>
+    </div>
+
+    <!-- New News Items -->
+    <div class="news-item">
+        <h3>🔒 Cybersecurity Threats on the Rise</h3>
+        <p>With the increase in remote work, cyberattacks have surged by 300% in the past year. Learn how to protect your data.</p>
+        <a href="{% url 'tech-trends' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>💻 Quantum Computing Breakthrough</h3>
+        <p>Researchers have achieved a major milestone in quantum computing, bringing us closer to solving complex problems faster.</p>
+        <a href="{% url 'tech-trends' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>📱 Foldable Smartphones: The Future of Mobile?</h3>
+        <p>Foldable smartphones are gaining popularity, with major brands launching innovative designs and features.</p>
+        <a href="{% url 'tech-trends' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🌐 Metaverse: The Next Digital Frontier</h3>
+        <p>The metaverse is transforming how we interact online, with virtual reality and augmented reality leading the way.</p>
+        <a href="{% url 'tech-trends' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🚗 Autonomous Vehicles Hit the Roads</h3>
+        <p>Self-driving cars are now being tested in major cities, promising safer and more efficient transportation.</p>
+        <a href="{% url 'ai-trends' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>⚡ Renewable Energy Tech Innovations</h3>
+        <p>Breakthroughs in solar and wind energy technologies are making renewable energy more accessible and affordable.</p>
+        <a href="{% url 'tech-trends' %}">Read more</a>
+    </div>
+</div>
+
+<style>
+    .news-container {
+        margin-top: 20px;
+    }
+    .news-item {
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    .news-item h3 {
+        margin: 0;
+        color: #007bff;
+    }
+    .news-item p {
+        margin: 5px 0;
+    }
+    .news-item a {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .news-item a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock %}

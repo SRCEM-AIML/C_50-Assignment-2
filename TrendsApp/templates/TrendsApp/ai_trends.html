@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}AI Trends{% endblock %}
+
+{% block content %}
+<h2>🤖 AI Trends</h2>
+<p>Discover how AI is shaping the future.</p>
+
+<div class="news-container">
+    <!-- AI News Items -->
+    <div class="news-item">
+        <h3>🚀 AI-Powered Coding Assistants</h3>
+        <p>Tools like GitHub Copilot are revolutionizing software development by helping developers write code faster and with fewer errors.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🧠 AI in Healthcare: Saving Lives</h3>
+        <p>AI is being used to diagnose diseases, predict patient outcomes, and even assist in surgeries, improving healthcare efficiency and accuracy.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🤖 Self-Driving Cars: The AI Behind the Wheel</h3>
+        <p>Autonomous vehicles rely on AI algorithms to navigate roads, avoid obstacles, and ensure passenger safety.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🎨 AI in Creative Industries</h3>
+        <p>From generating art to composing music, AI is pushing the boundaries of creativity and transforming the entertainment industry.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🔒 AI and Cybersecurity</h3>
+        <p>AI is being used to detect and prevent cyber threats in real-time, making the digital world safer for businesses and individuals.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>🌍 AI for Climate Change Solutions</h3>
+        <p>AI is helping scientists analyze climate data, optimize energy usage, and develop sustainable solutions to combat global warming.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>📈 AI in Financial Markets</h3>
+        <p>AI algorithms are being used to predict market trends, automate trading, and manage investment portfolios with precision.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+
+    <div class="news-item">
+        <h3>📱 AI-Powered Virtual Assistants</h3>
+        <p>Virtual assistants like Siri, Alexa, and Google Assistant are becoming smarter, offering personalized experiences and seamless interactions.</p>
+        <a href="{% url 'latest-news' %}">Read more</a>
+    </div>
+</div>
+
+<style>
+    .news-container {
+        margin-top: 20px;
+    }
+    .news-item {
+        background-color: #f8f9fa;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    .news-item h3 {
+        margin: 0;
+        color: #007bff;
+    }
+    .news-item p {
+        margin: 5px 0;
+    }
+    .news-item a {
+        color: #0056b3;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .news-item a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock %}
