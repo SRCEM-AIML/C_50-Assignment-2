@@ -1,49 +1,33 @@
 pipeline {
     agent any
-
     environment {
-        DOCKERHUB_CREDENTIALS = 'docker-hub-credentials' // Jenkins credentials ID
-        DOCKER_IMAGE = 'vedanshgupta25/newa-app-assignment2' // Replace with your Docker Hub repo
+        IMAGE_NAME = "vedanshgupta25/newa-app-assignment2"
+        CONTAINER_NAME = "django-assignment2-container"
     }
-
     stages {
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
-                echo 'Pulling latest code from Git repository...'
-                checkout scm
+                git branch: 'main', url: 'https://github.com/SRCEM-AIML/C_50_VedanshGupta_assignment2.git'
             }
         }
-
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
-                echo 'Building Docker image...'
-                sh "docker build -t $DOCKER_IMAGE:latest ."
+                sh 'docker build -t $IMAGE_NAME .'
             }
         }
-
-        stage('Login to Docker Hub') {
+        stage('Run Tests') {
             steps {
-                echo 'Logging into Docker Hub...'
-                withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKERHUB_PASSWORD')]) {
-                    sh "echo $DOCKERHUB_PASSWORD | docker login -u vedanshgupta25 --password-stdin"
-                }
+                sh 'docker run --rm $IMAGE_NAME python manage.py test'
             }
         }
-
-        stage('Push Docker Image') {
+        stage('Deploy') {
             steps {
-                echo 'Pushing Docker image to Docker Hub...'
-                sh "docker push $DOCKER_IMAGE:latest"
-            }
-        }
-    }
+                // Stop and remove existing container if running
+                sh 'docker stop $CONTAINER_NAME || true && docker rm $CONTAINER_NAME || true'
 
-    post {
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed!'
+                // Run new container
+                sh 'docker run -d --name $CONTAINER_NAME -p 8000:8000 $IMAGE_NAME'
+            }
         }
     }
 }
