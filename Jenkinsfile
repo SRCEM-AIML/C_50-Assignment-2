@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "vedanshgupta25/newa-app-assignment2"
-        DOCKER_CREDENTIALS_ID = "vedanshgupta25"
+        DOCKER_IMAGE = "your-dockerhub-username/your-repo-name"
+        DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
     }
 
     stages {
