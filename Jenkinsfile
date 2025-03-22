@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "vedanshgupta25/newa-app-assignment2"
-        DOCKER_CREDENTIALS_ID = "vedansggupta25"
+        DOCKER_CREDENTIALS_ID = "vedanshgupta25"
     }
 
     stages {
