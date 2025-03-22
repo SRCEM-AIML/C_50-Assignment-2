@@ -12,21 +12,21 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'docker build -t $IMAGE_NAME .'
+                sh 'docker build -t ${IMAGE_NAME} .'
             }
         }
         stage('Run Tests') {
             steps {
-                sh 'docker run --rm $IMAGE_NAME python manage.py test'
+                sh 'docker run --rm ${IMAGE_NAME} python manage.py test'
             }
         }
         stage('Deploy') {
             steps {
                 // Stop and remove existing container if running
-                sh 'docker stop $CONTAINER_NAME || true && docker rm $CONTAINER_NAME || true'
+                sh 'docker stop ${CONTAINER_NAME} || true && docker rm ${CONTAINER_NAME} || true'
 
                 // Run new container
-                sh 'docker run -d --name $CONTAINER_NAME -p 8000:8000 $IMAGE_NAME'
+                sh 'docker run -d --name ${CONTAINER_NAME} -p 8000:8000 ${IMAGE_NAME}'
             }
         }
     }
