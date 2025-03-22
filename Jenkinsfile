@@ -2,65 +2,48 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "your-dockerhub-username/your-repo-name"
-        DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
+        DOCKERHUB_CREDENTIALS = 'docker-hub-credentials' // Jenkins credentials ID
+        DOCKER_IMAGE = 'vedanshgupta25/newa-app-assignment2' // Replace with your Docker Hub repo
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                script {
-                    echo "Pulling latest code from Git repository..."
-                    checkout scm
-                }
+                echo 'Pulling latest code from Git repository...'
+                checkout scm
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    echo "Building Docker image..."
-                    sh "docker build -t ${DOCKER_IMAGE}:latest ."
-                }
+                echo 'Building Docker image...'
+                sh "docker build -t $DOCKER_IMAGE:latest ."
             }
         }
 
         stage('Login to Docker Hub') {
             steps {
-                script {
-                    echo "Logging into Docker Hub..."
-                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                        sh "echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin"
-                    }
+                echo 'Logging into Docker Hub...'
+                withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKERHUB_PASSWORD')]) {
+                    sh "echo $DOCKERHUB_PASSWORD | docker login -u vedanshgupta25 --password-stdin"
                 }
             }
         }
 
-        stage('Push Docker Image to Docker Hub') {
+        stage('Push Docker Image') {
             steps {
-                script {
-                    echo "Pushing Docker image to Docker Hub..."
-                    sh "docker push ${DOCKER_IMAGE}:latest"
-                }
-            }
-        }
-
-        stage('Deploy Docker Container') {
-            steps {
-                script {
-                    echo "Running new container from Docker Hub image..."
-                    sh "docker run -d -p 8000:8000 ${DOCKER_IMAGE}:latest"
-                }
+                echo 'Pushing Docker image to Docker Hub...'
+                sh "docker push $DOCKER_IMAGE:latest"
             }
         }
     }
 
     post {
         success {
-            echo "Pipeline executed successfully!"
+            echo 'Pipeline completed successfully!'
         }
         failure {
-            echo "Pipeline failed!"
+            echo 'Pipeline failed!'
         }
     }
 }
