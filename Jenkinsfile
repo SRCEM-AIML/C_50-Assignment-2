@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "vedanshgupta25/newa-app-assignment2"
-        CONTAINER_NAME = "django-assignment2-container"
+        CONTAINER_NAME = "ef293c0ca45dd2338080a4f0e20a8bf20589f6dd8a8119412934bde8647527a8"
     }
 
     stages {
