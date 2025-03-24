@@ -21,7 +21,12 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh "docker build -t ${IMAGE_NAME} ."
+                sh """
+                    docker stop ${CONTAINER_NAME} || echo "No running container"
+                    docker rm ${CONTAINER_NAME} || echo "No container found"
+                    docker rmi ${IMAGE_NAME} || echo "No old image found"
+                    docker build -t ${IMAGE_NAME} .
+                """
             }
         }
         
@@ -31,11 +36,22 @@ pipeline {
             }
         }
         
+        stage('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh """
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                        docker push ${IMAGE_NAME}
+                    """
+                }
+            }
+        }
+
         stage('Deploy') {
             steps {
                 sh """
-                    docker stop ${CONTAINER_NAME} || echo "Container not running"
-                    docker rm ${CONTAINER_NAME} || echo "Container not found"
+                    docker stop ${CONTAINER_NAME} || echo "No running container"
+                    docker rm ${CONTAINER_NAME} || echo "No container found"
                     docker run -d --name ${CONTAINER_NAME} -p 8000:8000 ${IMAGE_NAME}
                 """
             }
