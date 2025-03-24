@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'vedanshgupta/shopping-app:latest'  // Replace with your Docker Hub repo
+        DOCKER_IMAGE = 'vedanshgupta25/newa-app-assignment2'
     }
 
     stages {
@@ -15,15 +15,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    bat 'docker build -t %DOCKER_IMAGE% .'
-                }
-            }
-        }
-
-        stage('Login to Docker Hub') {
-            steps {
-                script {
-                    bat 'docker login -u "your-docker-username" -p "your-docker-password"'
+                    sh 'docker build -t $DOCKER_IMAGE .'
                 }
             }
         }
@@ -31,7 +23,9 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    bat 'docker push %DOCKER_IMAGE%'
+                    withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
+                        sh 'docker push $DOCKER_IMAGE'
+                    }
                 }
             }
         }
@@ -39,18 +33,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat 'docker run -d -p 8000:8000 --name shopping-app %DOCKER_IMAGE%'
+                    // Stop any running container with the same name
+                    sh 'docker stop studentproject || true && docker rm studentproject || true'
+
+                    // Run the new container
+                    sh 'docker run -d --name studentproject -p 8000:8000 $DOCKER_IMAGE'
                 }
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Deployment Successful!'
-        }
-        failure {
-            echo 'Deployment Failed!'
         }
     }
 }
