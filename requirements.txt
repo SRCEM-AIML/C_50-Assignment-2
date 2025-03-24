@@ -1,2 +1,4 @@
 Django
-
+asgrief
+sqlparse
+tzdata
